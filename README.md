@@ -172,6 +172,21 @@ Após salvar, o Maven fará o download automático da biblioteca.
 * 🚨 Se **50% falharem** → abre o circuito por **5s**
 * 🔄 Depois entra em **half-open** para testar se pode fechar
 
+
+**Propriedades configuráveis:**
+- 🧮 `sliding-window-size`: Quantidade de chamadas monitoradas (janela deslizante).
+- 📉`failure-rate-threshold`: Percentual de falhas para abrir o circuito (ex: 50%).
+- ⏱️`wait-duration-in-open-state`: Tempo que o circuito fica aberto antes de testar de novo
+- 🚪`permitted-number-of-calls-in-half-open-state`: Número de chamadas de teste em HALF_OPEN.
+- 🔢 `minimum-number-of-calls`: Mínimo de chamadas necessárias para avaliar falha/taxa.
+
+🧠 **Estados do Circuit Breaker:**
+- ✅ **CLOSED**: Tudo normal, chamadas passam.
+- 🔴 **OPEN**: Muitas falhas, chamadas são bloqueadas.
+- 🌓 **HALF_OPEN**: Testa se o serviço voltou, permitindo algumas chamadas.
+
+
+
 ---
 
 ### 🚦 Rate Limiter – `produto-list`
