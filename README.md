@@ -173,7 +173,7 @@ Após salvar, o Maven fará o download automático da biblioteca.
 * 🔄 Depois entra em **half-open** para testar se pode fechar
 
 
-**Propriedades configuráveis:**
+⚙️ **Propriedades configuráveis do Circuit Breaker:**
 - 🧮 `sliding-window-size`: Quantidade de chamadas monitoradas (janela deslizante).
 - 📉`failure-rate-threshold`: Percentual de falhas para abrir o circuito (ex: 50%).
 - ⏱️`wait-duration-in-open-state`: Tempo que o circuito fica aberto antes de testar de novo
@@ -204,16 +204,31 @@ Após salvar, o Maven fará o download automático da biblioteca.
 * 🎯 Permite no máximo **5 chamadas a cada 10 segundos**
 * 🛡 Protege o serviço contra **sobrecarga** ou chamadas excessivas
 
+
+
+⚙️ **Propriedades configuráveis do Rate Limiter:**
+- ✅ `limit-for-period`: Número máximo de chamadas permitidas por período.
+- 🔄 `limit-refresh-period`: Tempo de renovação do limite.
+- ⏳ `timeout-duration`: Tempo que uma chamada pode esperar por permissão antes de falhar.
+- ❤️ `register-health-indicator`: Habilita status no Actuator /health.
+- 📡 `subscribe-for-events`: Habilita publicação de eventos.
+- 📦 `event-consumer-buffer-size`: Tamanho do buffer de eventos do Rate Limiter.
+
+
+
+
 ---
 
 ### 🪵 Logging – Depuração
 
 
-logging.level.io.github.resilience4j=DEBUG
-logging.level.io.github.resilience4j.retry=TRACE
-logging.level.io.github.resilience4j.retry.Retry=DEBUG
-logging.level.io.github.resilience4j.retry.IntervalFunction=TRACE
-logging.level.io.github.resilience4j.circuitbreaker=TRACE
+  ```properties
+  logging.level.io.github.resilience4j=DEBUG
+  logging.level.io.github.resilience4j.retry=TRACE
+  logging.level.io.github.resilience4j.retry.Retry=DEBUG
+  logging.level.io.github.resilience4j.retry.IntervalFunction=TRACE
+  logging.level.io.github.resilience4j.circuitbreaker=TRACE
+  ```
 
 
 ✨ **Como funciona:**
