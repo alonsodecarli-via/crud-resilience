@@ -1,0 +1,1 @@
+DELETE FROM produtos WHERE nome = 'Notebook Dell' AND ncm = '123456';
